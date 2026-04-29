@@ -8,6 +8,7 @@ const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 // Connect to Database
 connectDB();
@@ -23,10 +24,13 @@ app.use(cors());
 app.use(express.json()); // Allows parsing JSON body
 
 // Mount Routes
+console.log('Registering routes...');
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/chat', chatRoutes);
+console.log('Routes registered successfully. /api/chat is active.');
 
 // Health check route
 app.get('/', (req, res) => {
